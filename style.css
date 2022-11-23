@@ -1,10 +1,9 @@
-main{
+/* main{
     background-color: #000;
-    /* font-size: 16px; */
-    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
     width: 100%;
-}
+} */
 a {
     text-decoration: none;
 }
@@ -13,11 +12,14 @@ img {
     height: auto;
     max-width: 100%;
 }
-.basicLayout{
-    overflow-x: hidden;
+.mainLayout{
+    background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
+    overflow-x: hidden;
+    /* letter-spacing: 0!important; */
 }
-.our-story-header-wrapper {
+.header-wrapper {
     height: 4rem;
     background-color: transparent;
     bottom: 0;
@@ -32,31 +34,25 @@ img {
     width: 100%;
     z-index: 10;
 }
-.our-story-header {
+.header {
     height: 100%;
     margin: 0 3.5rem;
     position: relative;
 }
-.nfLogo {
+.logo {
     fill: #e50914;
-    line-height: normal;
 }
-.nfLogo .svg-icon-netflix-logo {
+.logo .svg-icon-logo {
     height: 36px;
     width: 134px;
     padding-top: 0.5rem;
 }
-/* .screen-reader-text {
-    left: -9999px;
-    position: absolute;
-    top: -9999px;
-} */
-.authLinks {
+.signin {
     border-radius: 3px;
     color: #fff;
     margin-top: 0.5rem;
 }
-.authLinks.redButton {
+.signin.redButton {
     background-color: #e50914;
     float: right;
     font-size: 1rem;
@@ -64,10 +60,7 @@ img {
     line-height: normal;
     padding: 7px 17px;
 }
-/* .our-story-cards {
-    margin: 0 auto;
-} */
-.our-story-card {
+.card {
     padding: 70px 45px;
     background: transparent;
     border-bottom: 8px solid #222;
@@ -75,7 +68,7 @@ img {
     margin-bottom: 0;
     position: relative;
 }
-.our-story-card-background {
+.card-background {
     top: -100px;
     bottom: 0;
     left: 0;
@@ -85,21 +78,21 @@ img {
     top: -70px;
     z-index: 0;
 }
-.our-story-card-subtitle, .our-story-card-text {
+.card-subtitle, .card-text {
     font-size: 1.625rem;
     font-weight: 400;
 }
-.hero-card.vlv .our-story-card-background .concord-img-wrapper {
+.first-card .card-background .img-wrapper {
     bottom: 0;
 }
-.hero-card .concord-img-wrapper {
+.first-card .img-wrapper {
     bottom: 0;
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
 }
-.hero-card.vlv .concord-img-gradient {
+.first-card .img-trans {
     background: rgba(0,0,0,.4);
     background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8));
     bottom: 0;
@@ -108,7 +101,7 @@ img {
     right: 0;
     top: 0;
 }
-.hero-card .our-story-card-text {
+.first-card .card-text {
     margin: 0 auto;
     max-width: 950px;
     padding: 75px 0;
@@ -117,14 +110,14 @@ img {
     width: 100%;
     z-index: 1;
 }
-.hero-card.vlv .our-story-card-title {
+.first-card .card-title {
     font-size: 3.125rem;
 }
-.hero-card h1, .hero-card h2 {
+.first-card h1, .first-card h2 {
     margin: 0 auto;
     max-width: 640px;
 }
-.our-story-card-title {
+.card-title {
     font-size: 3.125rem;
     line-height: 1.1;
     margin-bottom: 0.5rem;
@@ -143,53 +136,51 @@ img {
     margin: 0 auto;
     padding: 0 5%;
 }
-.email-form-lockup {
+.email-form-grid {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
     text-align: center;
 }
-.email-form-lockup .simpleForm {
+.email-form-grid .simpleForm {
     flex: 1 0 auto;
     text-align: right;
     vertical-align: top;
 }
-ul.structural {
+ul.email {
     margin: 0;
     padding: 0;
 }
-ul.structural>li {
+ul.email > li {
     list-style: none;
     margin-left: 0;
 }
-.nfFormSpace {
+.formSpace {
     margin-bottom: 10px;
+    margin-top: 0.25em;
 }
-.email-form-lockup .nfInput {
+.email-form-grid .input {
     display: inline-block;
     margin: 0 auto;
 }
-.nfInput, .nfInput .nfInputPlacement {
+.input {
     position: relative;
-}
-.nfInput {
     max-width: 500px;
 }
-.email-form-lockup .nfInput input {
+.email-form-grid .input input {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     height: 60px!important;
     min-width: 450px;
 }
-.nfInput .nfTextField {
-    /* height: 48px; */
+.input .textField {
     padding: 10px 10px 0;
     width: 100%;
 }
-.nfTextField:invalid, .nfTextField:valid {
+.textField:invalid, .textField:valid {
     box-shadow: none;
 }
-.nfTextField {
+.textField {
     appearance: none;
     border: 1px solid #8c8c8c;
     border-radius: 2px;
@@ -198,34 +189,32 @@ ul.structural>li {
     display: block;
     font-size: 16px;
 }
-.nfInput .placeLabel {
+.input .placeHolderLabel {
     color: #8c8c8c;
     font-size: 16px;
     left: 10px;
     position: absolute;
     top: 50%;
-    /* transform: translateY(-50%); */
-    /* transition: font .1s ease,top .1s ease,transform .1s ease; */
+    transform: translateY(-50%);
+    transition: font .1s ease,top .1s ease,transform .1s ease;
 }
-.hero-card .our-story-card-text .our-story-cta-container {
+.first-card .card-text .start-container {
     float: none;
 }
-.email-form-lockup .our-story-cta-container {
+.email-form-grid .start-container {
     display: inline-block;
     flex: 1 0 auto;
     text-align: left;
     vertical-align: top;
 }
-.nmhp-cta-extra-large {
+.extra-large {
     font-size: 1.625rem;
     min-height: 60px;
-}
-.nmhp-cta {
     align-items: center;
     display: inline-flex;
     flex-direction: row;
     line-height: normal;
-    /* margin: 0.25em auto; */
+    margin: 0.25em auto;
     padding: 0 1em;
     width: auto;
 }
@@ -236,8 +225,6 @@ ul.structural>li {
     color: #fff;
 }
 .btn {
-    /* min-width: 74px;
-    position: relative; */
     border: 0;
     border-radius: 2px;
     box-sizing: border-box;
@@ -248,38 +235,41 @@ ul.structural>li {
     user-select: none;
     vertical-align: middle;
 }
-.animation-card .animation-card-container {
+.second-card .second-card-container {
     align-items: center;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     max-width: 1100px;
 }
-.animation-card.watchOnTv .our-story-card-text {
+.second-card.tv .card-text {
     margin: -5% 0;
 }
-.animation-card .our-story-card-text {
+.second-card .card-text {
     flex: 0 1 auto;
     height: 100%;
     padding: 0 3rem 0 0;
     width: 52%;
     z-index: 3;
 }
-.animation-card .our-story-card-img-container {
+.second-card .card-img-container {
     box-sizing: border-box;
     display: flex;
     flex: 0 1 auto;
     height: 100%;
     width: 48%;
 }
-.animation-card.watchOnTv .our-story-card-animation-container {
+.second-card.tv .card-animation-container {
     margin: -10% -5% -5% 0;
 }
-.animation-card .our-story-card-animation-container {
+.second-card .card-animation-container {
     overflow: hidden;
     position: relative;
 }
-.animation-card.watchOnTv .our-story-card-animation {
+.second-card.download .card-animation .card-animation-image img {
+    height: 4em;
+}
+.second-card.tv .card-animation {
     height: 100%;
     left: 50%;
     max-height: 54%;
@@ -289,7 +279,7 @@ ul.structural>li {
     transform: translate(-50%,-50%);
     width: 100%;
 }
-.animation-card.watchOnDevice .our-story-card-video, .animation-card.watchOnTv .our-story-card-video {
+.second-card.watchOnDevice .card-video, .second-card.tv .card-video {
     height: 100%;
     width: 100%;
 }
@@ -297,34 +287,34 @@ audio, canvas, progress, video {
     display: inline-block;
     vertical-align: baseline;
 }
-.animation-card.flipped .animation-card-container {
+.second-card.flipped .second-card-container {
     flex-flow: row-reverse;
 }
-.animation-card .animation-card-container {
+.second-card .second-card-container {
     align-items: center;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     max-width: 1100px;
 }
-.our-story-card-text {
+.card-text {
     padding: 0 0 0 3rem;
 }
-.animation-card .our-story-card-text {
+.second-card .card-text {
     flex: 0 1 auto;
     height: 100%;
     width: 52%;
     z-index: 3;
 }
-.animation-card.downloadAndWatch.flipped .our-story-card-animation-container {
+.second-card.download.flipped .card-animation-container {
     margin: -8% 0 -4% -15%;
 }
-.animation-card.downloadAndWatch .our-story-card-animation-container {
+.second-card.download .card-animation-container {
     margin: -8% 0 0;
     min-height: 100px;
     width: 100%;
 }
-.animation-card.downloadAndWatch .our-story-card-animation {
+.second-card.download .card-animation {
     padding: 0.5em 0.75em;
     align-items: center;
     background: #000;
@@ -340,12 +330,16 @@ audio, canvas, progress, video {
     transform: translateX(-50%);
     width: 60%;
 }
-.animation-card.downloadAndWatch .our-story-card-animation .our-story-card-animation-image {
+.second-card.download .card-animation .card-animation-image {
     flex-grow: 0;
     flex-shrink: 0;
     margin: 0 1em 0 0;
 }
-.animation-card.watchOnDevice .our-story-card-text {
+.second-card.download .card-animation .card-animation-text .text-1, .second-card.download .card-animation .card-animation-text .text-2 {
+    color: #0071eb;
+    font-weight: 400;
+}
+.second-card.watchOnDevice .card-text {
     margin: -2% 0;
 }
 .center-pixel {
@@ -407,7 +401,7 @@ button, input, optgroup, select, textarea {
     display: block;
     text-align: left;
 }
-.our-story-card.our-story-card-no-border {
+.card.card-no-border {
     border-bottom: none;
     padding-bottom: 0;
 }
@@ -468,7 +462,3 @@ button, input, optgroup, select, textarea {
     font-size: 13px;
     margin-top: 24px;
 }
-
-/* @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px){
-
-} */
